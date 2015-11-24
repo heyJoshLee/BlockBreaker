@@ -6,12 +6,13 @@ public class Ball : MonoBehaviour {
 
 	Rigidbody2D rb2d;
 	private bool hasStarted = false;
-	public Paddle paddle;
+	private Paddle paddle;
 	
 	private Vector3 paddleToBallVector;
 
 	// Use this for initialization
 	void Start () {
+		paddle = GameObject.FindObjectOfType<Paddle>();
 		paddleToBallVector = this.transform.position - paddle.transform.position;
 		rb2d = GetComponent<Rigidbody2D>();
 	}
