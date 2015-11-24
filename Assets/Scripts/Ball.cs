@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 
-	public Paddle paddle;
+
 	Rigidbody2D rb2d;
 	private bool hasStarted = false;
+	public Paddle paddle;
 	
 	private Vector3 paddleToBallVector;
 
