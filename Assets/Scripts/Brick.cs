@@ -10,6 +10,8 @@ public class Brick : MonoBehaviour {
 	private LevelManager levelManager;
 	private bool isBreakable;
 	
+	public GameObject smoke;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -34,6 +36,8 @@ public class Brick : MonoBehaviour {
 		int maxHits = hitSprites.Length + 1;
 		if (timesHit >= maxHits) {
 			breakableCount -= 1;
+			GameObject smokePuff = Instantiate(smoke, transform.position, Quaternion.identity) as GameObject;
+			smokePuff.GetComponent<ParticleSystem>().startColor = gameObject.GetComponent<SpriteRenderer>().color;
 			Destroy(gameObject);
 			levelManager.BrickDestroyed();
 		} else {
@@ -45,6 +49,8 @@ public class Brick : MonoBehaviour {
 		int spriteIndex = timesHit - 1;
 		if(hitSprites[spriteIndex]) {
 			this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		} else {
+			Debug.LogError("No Sprite found to change brick");
 		}
 	}
 	
