@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour {
 		rb2d = GetComponent<Rigidbody2D>();
 	}
 	
+	
 	// Update is called once per frame
 	void Update () {
 		if (!hasStarted){
@@ -30,5 +31,9 @@ public class Ball : MonoBehaviour {
 				rb2d.velocity = new Vector2(2f, 10f);
 			}
 		}
+	}
+	
+	void OnCollisionEnter2D (Collision2D col) {
+		GetComponent<AudioSource>().Play();
 	}
 }
