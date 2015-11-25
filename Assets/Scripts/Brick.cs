@@ -17,13 +17,14 @@ public class Brick : MonoBehaviour {
 	
 	}
 	
-	void OnCollisionEnter2D(Collision2D col)
-	{
+	void OnCollisionEnter2D(Collision2D col) {
 		timesHit += 1;
-		SimulateWin();
+		if (timesHit >= maxHits) {
+		Destroy(gameObject);
+		}
 	}
-	// TODO remove this method once we can win
 	
+	// TODO remove this method once we can win
 	void SimulateWin() {
 		levelManager.LoadNextLevel();
 	}
